@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dark Theme Login</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .notice {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            color: #bbbbbb;
+        }
+
+        .container {
+            background-color: #1e1e1e;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255,255,255,0.1);
+            width: 300px;
+        }
+
+        select, input, button {
+            margin-top: 1rem;
+            padding: 0.5rem;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        select, input {
+            background-color: #2c2c2c;
+            color: white;
+        }
+
+        button {
+            background-color: #3b82f6;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2563eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="notice">
+        If you want to sign up please join the bean bloodline or if your already in 
+        talk to bean for your password
+    </div>
+
+    <div class="container" id="loginContainer">
+        <h2>Login</h2>
+        <select id="playerSelect"></select>
+        <input type="password" id="passwordInput" placeholder="Enter password">
+        <button onclick="login()">Login</button>
+    </div>
+
+    <script>
+        // Define players
+        const players = [
+            { name: "BEAN KING", password: "something" }
+
+        ];
+
+        // Populate dropdown
+        const playerSelect = document.getElementById("playerSelect");
+        players.forEach((player, index) => {
+            const option = document.createElement("option");
+            option.value = index;
+            option.textContent = player.name;
+            playerSelect.appendChild(option);
+        });
+
+        // Login function
+        function login() {
+            const selectedIndex = playerSelect.value;
+            const enteredPassword = document.getElementById("passwordInput").value;
+            const player = players[selectedIndex];
+
+            if (player && enteredPassword === player.password) {
+                // Replace everything with <h1>test</h1>
+                document.body.innerHTML = "<h1 style='color: white; text-align: center; margin-top: 20%; font-size: 3rem;'>test</h1>";
+            } else {
+                alert("Incorrect password.");
+            }
+        }
+    </script>
+</body>
+</html>
